@@ -1,10 +1,14 @@
 package edu.ifba.trabalho.Model;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,9 +31,11 @@ import lombok.Setter;
 		@Column(name= "referencia")
 		private String referencia;
 		
-		@Column(name= "cadastro")
-		private String cadastro;
-		// ver o tipo do date de registro
+		
+		@DateTimeFormat(pattern = "dd/MM/yyyy")
+		private Date cadastro;
+		// ver o tipo do date de registro para combinar com o sql
+		//saber se todas as colunas sao neme por padrao de varchar
 		
 		
 }

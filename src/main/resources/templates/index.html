@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<html
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmentos/geral.html :: headerfiles (title = 'Início')">
 </head>
 <body>
-<h1>olá mundo</h1>
+
+	<header th:replace="fragmentos/geral.html :: header">
+	</header>
+
+	<div class="container my-3 bg-success">
+		<div class="jumbotron bg-light">
+			<div class="text-left">
+  			
+  				<img th:src="@{/img/ifba.jfif}" class="rounded" alt="logo IFBA">
+			</div>
+			<h1 class="display-4 text-center">BIBLIOTECA DO IFBA</h1>
+			<p class="lead">Esse eh o sistema de gerenciamento bibliotecario IFBA Santo Amaro</p>
+			<hr class="my-4">
+			<p>Faca login para usar o sistema</p>
+			<p class="lead">
+				<a class="btn btn-success btn-lg" href="#" role="button">Login</a>
+			</p>
+		</div>
+	</div>
+
+	<footer th:replace="fragmentos/geral.html :: footer">
+	</footer>
+
 </body>
-</html>
+</html> 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmentos/geral.html :: headerfiles (title = 'Listagem de Livros')">
+</head>
+<body>
+
+	<header th:replace="fragmentos/geral.html :: header">
+	</header>
+
+	<div class="container my-3">
+		
+		<h1 class="display-4 text-center my-3">Lista de Livros Cadastrados</h1>
+		<table class="table table-striped text-center">
+			<thead>
+				<tr>
+					<th scope="col">COD</th>
+					<th scope="col">Titulo</th>
+					<th scope="col">Descricao</th>
+					<th scope="col">ISBN</th>
+					<th scope="col">Data do Cadastro</th>
+					<th scope="col">Opçoes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="livro : ${Livros}">
+					<th scope="row" th:text="${livro.id}"></th>
+					<th th:text="${livro.titulo}"></th>
+					<th th:text="${livro.descricao}"></th>
+					<th th:text="${livro.referencia}"></th>
+					<th th:text="${#dates.format(livro.cadastro, 'dd/MM/yyyy')}"></th>
+					<th>
+						<a class="btn btn-outline-primary"
+							th:href="@{/Livros/detalhes/{id}(id = ${livro.id})}">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</a>
+						<a class="btn btn-outline-success"
+							th:href="@{/Livros/save/{id}(id = ${livro.id})}">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+						<a class="btn btn-outline-danger"
+							th:href="@{/Livros/deletar/{id}(id = ${livro.id})}">
+							<i class="fa fa-trash-o" aria-hidden="true"></i>
+						</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+	<footer th:replace="fragmentos/geral.html :: footer">
+	</footer>
+
+</body>
+</html>

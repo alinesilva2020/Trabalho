@@ -1,10 +1,13 @@
 package edu.ifba.trabalho.Controler;
 
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.ifba.trabalho.Model.Livros;
 import edu.ifba.trabalho.Service.ILivrosService;
@@ -52,4 +55,10 @@ public class LivrosControler {
 		model.addAttribute("mode", mode);
 		return "Livros/formulario";
 }
+	@PostMapping("Livros/save")
+	public String save(@ModelAttribute Livros l) {
+		l.setCadastro(new Date());
+		service.save(l);
+		return "redirect:/Livros/listar";
+	}
 }
